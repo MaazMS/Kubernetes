@@ -1,33 +1,36 @@
-# Pods  
-![](https://d33wubrfki0l68.cloudfront.net/fe03f68d8ede9815184852ca2a4fd30325e5d15a/98064/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg)   
-### pod
+### pod 
 1. A pod is the smallest execution unit in Kubernetes.  
 `Example `   
 In the virtualization world, a virtual machine is an atomic unit and in docker world “container” is an atomic unit and In the Kubernetes world, Pods are the atomic units.     
-2. It contain one or more containers and volume.    
+2. It contain one or more containers and volume.   
+![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/small_unit_pod.png?raw=true)    
+   
 ### pod deployment  
 step 1 : write manifest file inside the mainfest file container images.  
 step 2 : mainfest file submit to API-SERVER on master node.   
-step 3 : master node decide deploy pod on appropriate worker nodes in k8s.  
+step 3 : master node decide deploy pod on appropriate worker nodes in k8s.   
+
+ 
 * Generally our aim is deploy application in the form of container but k8s not deploy container directly on workers nods.    
 * k8s is encapsulate container inside the `pod`  
-Q1. How scale up application?.  
-a. Add new container with same pod the ans is wrong.  
-b. we create new pod with same application instance in that nod.  
-Q2. What happened when the nod does not have sufficient space?.  
-a. create new vm and join that new nod to cluster once it ready k8s deploy pod on new nod.   
-Q3. How scale down application?.  
-1. delete the pod the application is scale down.  
 
-```gitignore
+Q1. What is mainfest file?.   
 Kubernetes manifests are used to create, modify and delete Kubernetes resources such as pods, deployments, services or   
 ingresses. It is very common to define manifests in form of . yaml files and send them to the Kubernetes API Server via   
 commands such as kubectl apply -f my-file. yaml or kubectl delete -f my-file.
-```   
+
+Q2. How scale up application?.  
+a. Add new container with same pod the ans is wrong.  
+b. we create new pod with same application instance in that nod.  
+Q3. What happened when the nod does not have sufficient space?.  
+a. create new vm and join that new nod to cluster once it ready k8s deploy pod on new nod.   
+Q4. How scale down application?.  
+1. delete the pod the application is scale down.      
+![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/pod%20deployment%20.png?raw=true)    
+
+  
 
 ### Multi- container  
-![](https://matthewpalmer.net/kubernetes-app-developer/articles/networking-overview.png)  
-
 1. one pod for one container. which is explain above.  
 2. Multi container communicate with each other directly because by referencing localhost, share same network, storage, namespace.  
  
@@ -41,38 +44,41 @@ Q2. What type of support task we do for helper container?.
 Q3. what time we create or delete helper container?.   
 1. When new app container is created helper container also created.  
 2. When app container die helper container is also die.  
+![](https://matthewpalmer.net/kubernetes-app-developer/articles/networking-overview.png)     
+
 
 ### pod Networking  
 1. Every `nod` inside k8s cluster has unique **ip address** which is called nod ip address.  
 2. Every `pod` inside k8s cluster nod has unique **port number**       
 3. The ip address of nod and port number of pod is use for communication and sharing resources.     
-### Inter-pod communication   
-1. All the pod have unique ip address.    
-2. The port ip address are fully routable on the **pod network** inside k8s cluster.  
-3. Their is no need for mapping the port.
-4. The communicate the container inside the specific pod then **port ip.port numner**  
+### Inter-pod  
+1. Multiple containers from different pod communicate each other.   
+2. All the pod have unique ip address.    
+3. The port ip address are fully routable on the **pod network** inside k8s cluster.  
+4. Their is no need for mapping the port.
+5. The communicate the container inside the specific pod then **port ip.port numner**  
+![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/Inter%20pod%20communication.png?raw=true)    
+#### Intra- pod  
+1. Multiple containers inside same pod communicate each other.    
+2. Every `pod` inside k8s cluster nod has unique **port number**    
+3. Multiple container take share host (localhost) which is use for sharing resource.  
+4. Not choose same port number in one pod.   
+ ![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/Intra-%20pod%20communication.png?raw=true)    
 
-####   
+   
 
+# Pod lifecycle    
+1. Define pod configuration inside mainfest (yml and json file)  
+2. submit mainfest file to API-SERVER on k8s cluster.   
+3. It get schedule on worker nodes inside the k8s cluster.  
+4. once it schedule it goes to pending state.  
+5. When the pod is pending state download container.    
+6. pods bonds to nods and all container is created.At least one container is stilling running os is  in the process of starting or restarting.  
+7. Running state the main purpose of pods is to achive task and it goe to Succeeded state.  
+8. `Failed`: At least one container has failure in pod.  
+9. `Unknown` : The state of the Pod cannot be determined.   
+10. Pods do not "heal" or repair themselves. for example node fail and pod delete for any reason it does not replace itself.     
+11. if a pod fails Kubernetes can automatically create a new replica of that pod to continue operations.  
 
-3. if a pod fails Kubernetes can automatically create a new replica of that pod to continue operations.  
-4. Pods contain shared networking and storage resources for their containers.  
-5. Pods are automatically assigned unique IP addresses.
-6. Pod containers share the same network namespace, including IP address and network ports.    
-7. Pods run on nodes in your cluster.  
-You can consider a Pod to be a self-contained, isolated "logical host" that contains the systemic needs of the application it serves.  
-
-# Pod lifecycle  
-1. Pods are ephemeral.  
-2. They are not designed to run forever, and when a Pod is terminated it cannot be brought back  
-3. In general, Pods do not disappear until they are deleted by a user or by a controller.      
-4. Pods do not "heal" or repair themselves. for example node fail and pod delete for any reason it does not replace itself.    
-5. Each Pod has a PodStatus API object, which is represented by a Pod's status field.   
-6. Pods publish their phase(summary of the Pod in its current state.) to the status: phase field.   
-7. phase of pods are Pending, Running, Succeeded, Failed, Unknown,   
-`Pending` : Pod has been created and accepted by the cluster, but containers inside of pod are not yet running.  
- This phase includes scheduled on a node and downloading images.   
-`Running` : Pod has been bound to a node, and all of the containers have been created. At least one container is running.  
-`Succeeded` : All containers in the Pod have terminated successfully. Terminated Pods do not restart.  
-`Failed`: At least one container has failure in pod.  
-`Unknown` : The state of the Pod cannot be determined.   
+![](https://drek4537l1klr.cloudfront.net/luksa3/v-4/Figures/6.1.png)
+Q1. who download container?   
