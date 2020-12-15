@@ -82,3 +82,21 @@ Q3. what time we create or delete helper container?.
 
 ![](https://drek4537l1klr.cloudfront.net/luksa3/v-4/Figures/6.1.png)
 Q1. who download container?   
+
+### pod config   
+* Top 4 level required fields.  
+1. API version  
+2. Kind  
+3. meta data   
+4. spec  
+
+`API version v1` : First stable release of API version. It contain core object which include pod, replication, controller, services.   
+`API version apps/v1` : It is most common group of k8s. It include functionality tool such as deployment, replicaset, deamonset.    
+`API version batch/v1 `: Object related to batch such as job.   
+`Kind`: Object of k8s.                            
+`meta data` : name and label.  
+name : Name of object in k8s. It is not optional.   
+label : It just tag give to pod. It is used to filter the pod is cluster. It is optional.  
+`spec` : Define container configuration in spec.  
+![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/pod%20config.png?raw=true)    
+![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/pod_config%202.png?raw=true)   
