@@ -1,7 +1,9 @@
 # Pods  
 ![](https://d33wubrfki0l68.cloudfront.net/fe03f68d8ede9815184852ca2a4fd30325e5d15a/98064/docs/tutorials/kubernetes-basics/public/images/module_03_pods.svg)   
-Q1. What is pod ?. 
-1. A pod is the smallest execution unit in Kubernetes.     
+Q1. What is pod ?.  
+1. A pod is the smallest execution unit in Kubernetes.  
+`Example `   
+In the virtualization world, a virtual machine is an atomic unit and in docker world “container” is an atomic unit and In the Kubernetes world, Pods are the atomic units.     
 2. It contain one or more containers and volume.  
 3. if a pod fails Kubernetes can automatically create a new replica of that pod to continue operations.  
 4. Pods contain shared networking and storage resources for their containers.  
