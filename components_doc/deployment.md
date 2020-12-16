@@ -14,7 +14,12 @@ d. Rollback upgrade to previous stable release?.
 6. inside deployment mainfest file contain pod definition , number of pod relicaset, upgrade strategy.  
 
 ### Feature  
-1. Multiple Replicas  
+1. Multiple Replicas    
+2. Upgrade  
+3. Rollback  
+4. Scale up or down 
+5. Pause and Resume  
+
 **Multiple Replicas** 
 With the help of deployment we can create multiple replicas of pods for high availability and load balancing.  
 when we create deployment by default k8s automatically create replicaset in the background for you.  
