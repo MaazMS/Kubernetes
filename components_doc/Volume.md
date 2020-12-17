@@ -25,4 +25,18 @@ The app inside the pod is deal with data then those app called as stateful app. 
 Ephemeral volume create when pod is created, when pod die Ephemeral volume is destroy.  
 **Durable** 
 1. Durable volume create when pod is created, but data persist inside the volume even after pod die.   
-2.We can refer this volume another new pod with to make use of data exit already and create new data on top of that volume.  
+2.We can refer this volume another new pod with to make use of data exit already and create new data on top of that volume.    
+
+
+
+### emptyDir   
+1. create empty directory first created when pod is assigned to a nod.  
+2. stay as pod is running.  
+3. One pod is removed from node emptyDir is deleted forever.  
+* usecae   
+   1. Temporary space   
+   2. TO share same data with multiple container in same pod.    
+### HostPath   
+1. Hostpath is one of the directory of worker nodes as volume inside the pod.       
+2. Data inside the hostpath is remain even after the pod is die.    
+3. if pod is die and schedule with same worker node the previous is used by that pod.  
