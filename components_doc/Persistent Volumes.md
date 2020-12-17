@@ -39,6 +39,7 @@ Developer delete pvc k8s
 **static**  
 1. Administrator need to create the Persistent volume before developer Persistent volume claim by developer.  
 2. When user is request the storage which is not available then dynamic storage come.      
+![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/static%20pv.png?raw=true)  
 **dynamic**  
 1. Storage infrastructure with different types of storage such as fast ssd ,slow speed HDD, distributed  cluster storage  
 so we do not create pv manually instead we create storage class these storage class are generally created depending upon   
@@ -47,4 +48,4 @@ the type of medium in the backend.
 3. Admin will have to configure the default storage class before we do any things.  
 4. This is useful when developer does not mention storage class inside pvc configure. It automatically provisioned storage    
 from default storage class.  
-      
+![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/dynamic%20pv%20.png?raw=true)          
