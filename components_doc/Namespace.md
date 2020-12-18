@@ -30,4 +30,6 @@ is assign the task to worker.
 **kube-public**   
 In case that some resources should be visible publicly available without authentication.   
 **kube-system**  
-The namespace for objects created by the Kubernetes system.    
+The namespace for objects created by the Kubernetes system.     
+eg. kube-proxy , kubernetes-dashboard   
+ 
