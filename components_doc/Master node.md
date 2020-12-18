@@ -1,3 +1,4 @@
+### Master node
 * Master is responsible to managing whole cluster.  
 * It monitors the health check of these nods   
 * It showing information about the member of cluster.  
