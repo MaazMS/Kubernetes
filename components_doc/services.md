@@ -15,21 +15,22 @@ are recognized their respective pods.
 1. ClusterIP    
 2. NodePort   
 3. LoadBalancer    
-**ClusterIP**
+##   ClusterIP
 1. This default type service.   
 2. It exposes cluster-internal IP.   
 3. You can reach the service only from within the cluster.     
 `Example`  connect front-end to back-end   
 ![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/Cluster%20Ip.png?raw=true)   
-**NodePort**  
+## NodePort  
 1.  This type of service exposes the service outside the world.    
 2. How to communicate services inside of cluster to outside of world.     
 Example web app connect to internet.  
 
 Q1. Why we need node port?.  
-1. Webapp inside the pod when pod is die controller create new pod with new ip.   
-2. Their is no connectivity between user and pod.     
-![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/Node%20Port.png?raw=true)   
+a. Webapp inside the pod when pod is die controller create new pod with new ip.   
+b. Their is no connectivity between user and pod.     
+![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/Node%20Port.png?raw=true)     
+
 **Explain**  
 1. User is connect with node port.  
 2. Node port is connect the pod inside of cluster.   
@@ -38,7 +39,7 @@ Q1. Why we need node port?.
 1.Define node port in range 30000  to 32767 define in manifest file.    
 2. If not define k8s define dynamically in range between 30000  to 32767.    
 3. Outside of that range define node port is not node port.  
-**LoadBalancer**   
+## LoadBalancer   
 1. when the app instance is distribute across couple of node on cluster.   
 2. multiple pod in single node and multiple pods in multiple nodes the LoadBalancer is use.       
 Q1. Which ip is use to access the app?.      
