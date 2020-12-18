@@ -1,7 +1,7 @@
 ### why need deployment
 Q1. Imagine your are upgrading application from v1 to v2.   
-a. upgrading with zero downtime?. 
-b. upgrading sequentially, one after another?.  
+a. upgrading with zero downtime?.    
+b. upgrading sequentially, one after another?.      
 c. paused and resume upgrad process?.  
 d. Rollback upgrade to previous stable release?.  
 
@@ -20,12 +20,11 @@ d. Rollback upgrade to previous stable release?.
 4. Scale up or down 
 5. Pause and Resume  
 
-**Multiple Replicas** 
+**Multiple Replicas**     
 With the help of deployment we can create multiple replicas of pods for high availability and load balancing.  
 when we create deployment by default k8s automatically create replicaset in the background for you.  
 In case we not mention replicaset in deployment mainfest file, deployment will create replicaset with count 1.Because   
-it safe that one pod is running always.  
-
+it safe that one pod is running always.     
 **Upgrade** 
 **Rollback**  
 if some things wrong with current upgrade then deployment controller will allow to rollback to you previous stable version.  
