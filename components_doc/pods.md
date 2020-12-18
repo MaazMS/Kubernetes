@@ -21,11 +21,12 @@ commands such as kubectl apply -f my-file. yaml or kubectl delete -f my-file.
 
 Q2. How scale up application?.  
 a. Add new container with same pod the ans is wrong.  
-b. we create new pod with same application instance in that nod.  
+b. we create new pod with same application instance in that nod.    
 Q3. What happened when the nod does not have sufficient space?.  
-a. create new vm and join that new nod to cluster once it ready k8s deploy pod on new nod.   
+a. create new vm and join that new nod to cluster once it ready k8s deploy pod on new nod.     
 Q4. How scale down application?.  
-1. delete the pod the application is scale down.      
+a. delete the pod the application is scale down.           
+  
 ![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/pod%20deployment%20.png?raw=true)    
 
   
@@ -35,32 +36,32 @@ Q4. How scale down application?.
 2. Multi container communicate with each other directly because by referencing localhost, share same network, storage, namespace.  
  
 Q1. What case we use multiple container in one single pod?.   
-1. Some times we need helper container for some support task for main container that time we use multiple container.  
+a. Some times we need helper container for some support task for main container that time we use multiple container.  
 
 Q2. What type of support task we do for helper container?.   
-1. processing user enter data.  
-2. processing files which is uploaded by user.  
+a. processing user enter data.  
+b. processing files which is uploaded by user.  
 
 Q3. what time we create or delete helper container?.   
-1. When new app container is created helper container also created.  
-2. When app container die helper container is also die.  
+a. When new application create container is created also helper container.  
+b. When app container die helper container is also die.  
 ![](https://matthewpalmer.net/kubernetes-app-developer/articles/networking-overview.png)     
 
 
 ### pod Networking  
-1. Every `nod` inside k8s cluster has unique **ip address** which is called nod ip address.  
-2. Every `pod` inside k8s cluster nod has unique **port number**       
-3. The ip address of nod and port number of pod is use for communication and sharing resources.     
+1. Every `pod` inside k8s cluster has unique **ip address** which is called pod ip address.  
+2. Every `container` inside pod has unique **port number**       
+3. The ip address of pod and port number of container is use for communication and sharing resources.     
 ### Inter-pod  
 1. Multiple containers from different pod communicate each other.   
 2. All the pod have unique ip address.    
-3. The port ip address are fully routable on the **pod network** inside k8s cluster.  
-4. Their is no need for mapping the port.
-5. The communicate the container inside the specific pod then **port ip.port numner**  
+3. The pod ip address are fully routable on the **pod network** inside k8s cluster.  
+4. Their is no need for mapping the pod.
+5. The communicate the container inside the specific pod then **pod ip.port numner**  
 ![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/Inter%20pod%20communication.png?raw=true)    
 #### Intra- pod  
 1. Multiple containers inside same pod communicate each other.    
-2. Every `pod` inside k8s cluster nod has unique **port number**    
+2. Every `container` inside pod has unique **port number**  
 3. Multiple container take share host (localhost) which is use for sharing resource.  
 4. Not choose same port number in one pod.   
  ![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/Intra-%20pod%20communication.png?raw=true)    
@@ -81,7 +82,6 @@ Q3. what time we create or delete helper container?.
 11. if a pod fails Kubernetes can automatically create a new replica of that pod to continue operations.  
 
 ![](https://drek4537l1klr.cloudfront.net/luksa3/v-4/Figures/6.1.png)
-Q1. who download container?   
 
 ### pod config   
 * Top 4 level required fields.  
