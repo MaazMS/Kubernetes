@@ -20,7 +20,8 @@ support set based selector | Equality based selector
 **Label**   
 1. Label are key value pair generally attached to pod.  
 2. It is use to give tag to pod.  
-3. It is helping to manage and display pod.
+3. It is helping to manage and display pod.     
+            
 **selector** 
 1. Controller and services are manage pods using selector.  
 2. Their are two way to define selector.  
@@ -33,9 +34,11 @@ selector:                                     selector:
                                                    tier: front-end
 
 
-```` 
-support for older resource such as            support for new resource such as ReplicaSet, deployment, job, deamonset.   
-Replication controller, services.  
+````   
+selector| selector matchLabels   
+--- |---|
+support for older resource   |        support for new resource    
+such as  Replication controller, services.| such as ReplicaSet, deployment, job, deamonset.  
 
 ### Equilty-based and Set-based Selector.  
 ![](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/images/Enqulity%20set%20based.png?raw=true)   
