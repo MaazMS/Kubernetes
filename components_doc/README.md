@@ -1,5 +1,4 @@
 # components of k8s    
-1. 
 1. [Pods](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/pods.md)    
 2. [Namespaces](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/Namespace.md)      
 3. [Services](https://github.com/MaazMS/Kubernetes/blob/k8s/components_doc/services.md)           
