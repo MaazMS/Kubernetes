@@ -1,7 +1,7 @@
 ### Stateful sets  
 1. It is use for Stateful application.  
 2. Stateful application : Are those application that store data in database for track the state of the application.    
-3. There are two way to deploy the 1. `deployment` 2.`Stateful`    
+3. There are two way to deploy the application   1. `deployment` 2.`Stateful`    
 4. Stateless application is deploy using deployment.     
 5. StatefulSet is the workload API object used to manage stateful applications.  
 6. StatefulSet manages Pods that are based on an identical container spec.  
