@@ -38,4 +38,28 @@ operatorgroups.operators.coreos.com           2020-12-22T07:06:39Z
 operators.operators.coreos.com                2020-12-22T07:06:39Z
 subscriptions.operators.coreos.com            2020-12-22T07:06:40Z
 
+``` 
+* Installing OLM creates a default catalog source in the olm namespace  
+``` 
+maaz@maaz-Lenovo-G50-70:~$ kubectl get catalogsource -n olm
+NAME                    DISPLAY               TYPE   PUBLISHER        AGE
+operatorhubio-catalog   Community Operators   grpc   OperatorHub.io   22m
+ 
+```  
+* find further details about the source by using the describe command. 
+```  
+aaz@maaz-Lenovo-G50-70:~$ kubectl describe catalogsource/operatorhubio-catalog -n olm
+Name:         operatorhubio-catalog
+Namespace:    olm
+Labels:       <none>
+Annotations:  <none>  
+more details are show 
+``` 
+* packagemanifest utility API to get a list of the Operators that are found hosted on OperatorHub.io.  
+``` 
+maaz@maaz-Lenovo-G50-70:~$ kubectl get packagemanifest -n olm
+NAME                                       CATALOG               AGE
+minio-operator                             Community Operators   23m
+opentelemetry-operator                     Community Operators   23m
+more details are show 
 ```
