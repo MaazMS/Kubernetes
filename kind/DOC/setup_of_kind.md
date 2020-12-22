@@ -29,6 +29,7 @@ Example `export PATH=$PATH:/usr/local/go/bin`
 ### Setup kind with dependency  
 1. install go tool  
 2. install Docker   
+4. download kind     
 3. How to configure kind  
 ```  
 download golang tis is file name go1.15.6.linux-amd64.tar.gz
@@ -40,7 +41,9 @@ sudo tar zxf go1.15.6.linux-amd64.tar.gz -C /usr/local
 [sudo] password for maaz: 
 maaz@maaz-Lenovo-G50-70:~/github/GO$ sudo tar zxf go1.15.6.linux-amd64.tar.gz -C /usr/local  
 maaz@maaz-Lenovo-G50-70:~/github/GO$ ls /usr/local
-bin  etc  games  go  include  lib  man  sbin  share  src
+bin  etc  games  go  include  lib  man  sbin  share  src 
+download kind   
+maaz@maaz-Lenovo-G50-70:~$ GO111MODULE="on" go get sigs.k8s.io/kind@v0.9.0
 ```  
 4.Set path for go  
 ``` 
