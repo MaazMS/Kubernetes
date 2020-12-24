@@ -34,16 +34,34 @@ kubectl cluster-info --context kind-kind
 Thanks for using kind! 😊              
 
 ```
-1. Download The image     
-2. Preparing nodes  
-3. configuration setup   
+1. Download The image (k8s cluster)     
+2. Preparing nodes (worker node)
+3. configuration setup (kube-configuration)
 4. Starting control-plane (master node)  
 5. Installing CNI (Container Network Interface) 
 6. Installing StorageClass   
 
 * creating cluster by user define name   
-q* creating images   
-1. kind create cluster --image=....    
+
+**maaz@maaz-Lenovo-G50-70:~/github/Kubernetes/ECK$ kind create cluster --name test1**  
+``` 
+Creating cluster "test1" ...
+ ✓ Ensuring node image (kindest/node:v1.19.1) 🖼 
+ ✓ Preparing nodes 📦  
+ ✓ Writing configuration 📜 
+ ✓ Starting control-plane 🕹️ 
+ ✓ Installing CNI 🔌 
+ ✓ Installing StorageClass 💾 
+Set kubectl context to "kind-test1"
+You can now use your cluster with:
+
+kubectl cluster-info --context kind-test1
+
+Have a question, bug, or feature request? Let us know! https://kind.sigs.k8s.io/#community 🙂
+```
+**maaz@maaz-Lenovo-G50-70:~/github/Kubernetes/ECK$ kind get clusters**    
+test1
+
 
 ### configuration of cluster   
 1. To see kube-configuration file`kind get kubeconfig`
@@ -62,7 +80,7 @@ maaz@maaz-Lenovo-G50-70:~$ kubectl  get nodes -o wide
 NAME                 STATUS   ROLES    AGE    VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                                     KERNEL-VERSION     CONTAINER-RUNTIME
 kind-control-plane   Ready    master   129m   v1.19.1   172.18.0.2    <none>        Ubuntu Groovy Gorilla (development branch)   5.4.0-58-generic   containerd://1.4.0
 ````   
-* client and server details    
+* client and server details are showing k8s cluster version   
 ```
 maaz@maaz-Lenovo-G50-70:~$ kubectl version --short
 Client Version: v1.20.0
@@ -99,7 +117,13 @@ replicaset.apps/coredns-f9fd979d6   2         2         2       132m
 
 ### how to delete cluster   
 1. kind delete cluster.  
-kind will use the default cluster context name kind and delete that cluster.   
+kind will use the default cluster context name kind and delete that cluster.    
+``` 
+maaz@maaz-Lenovo-G50-70:~$ kind get clusters 
+kind  
+maaz@maaz-Lenovo-G50-70:~$ kind delete clusters test1
+Deleted clusters: ["kind"]
+``` 
 2. Delete the name of specific cluster  
 ```   
 maaz@maaz-Lenovo-G50-70:~$ kind get clusters
@@ -111,3 +135,4 @@ No kind clusters found.
 
 ```
 
+Q. creating images   
